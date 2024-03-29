@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void answer(int c, int &s, vector<int> &nums, vector<vector<int>> &ans, vector<int> &t){
+        if(c>=s){
+            ans.push_back(t);
+            return;
+        }
+        t.push_back(nums[c]);
+        answer(c+1,s,nums,ans,t);
+        t.pop_back();
+        answer(c+1,s,nums,ans,t);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> t;
+        int s = nums.size();
+        answer(0,s,nums,ans,t);
+        return ans;
+    }
+};
